@@ -1,6 +1,7 @@
 # babel-plugin-meteor-imports
 
 Simple Babel plugin that allows you to import from Meteor packages in code that isn't processed by isobuild.
+(But it assumes you've loaded the packages by requiring `boot.js` from `.meteor/local/build/programs/server`.)
 
 For example, it transforms:
 ```es6
