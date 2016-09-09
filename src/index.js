@@ -6,9 +6,9 @@ export default ({ types: t }) => {
   }
 
   function memberExpressionForMeteorModuleArg(moduleArg) {
-    return ['Package', ...moduleArg.value.split(/\//g).slice(1)].map(part => t.identifier(part)).reduce(
-      (object, property) => t.memberExpression(object, property)
-    )
+    return ['Package', ...moduleArg.value.split(/\//g).slice(1)]
+      .map(part => /^[a-zA-Z_][a-zA-Z0-9_]*$/.test(part) ? t.identifier(part) : t.stringLiteral(part))
+      .reduce((object, property) => t.memberExpression(object, property, property.type === 'StringLiteral'))
   }
 
   function transformRequireCall(nodePath, state) {
