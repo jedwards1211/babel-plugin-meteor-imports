@@ -9,6 +9,7 @@
     "test": "mocha $npm_package_config_mocha",
     "coverage": "babel-node ./node_modules/.bin/isparta cover --report lcov _mocha -- $npm_package_config_mocha",
     "prepublish": "npm run lint:fix && rimraf lib && babel src --out-dir lib && npm test"
+    "postpublish": "git tag -a v$npm_package_version -m v$npm_package_version && git push origin v$npm_package_version"
   },
   "config": {
     "mocha": "--compilers js:babel-core/register ./test/**/*.js"
