@@ -1,16 +1,13 @@
-# es2015-library-skeleton
+# babel-plugin-meteor-imports
 
-This is my personal skeleton for creating an ES2015 library component npm module.  You are welcome to use it.
+Simple Babel plugin that allows you to import from Meteor packages in code that isn't processed by isobuild.
 
-## Tools used
-
-* babel 6
-* mocha
-* chai
-* sinon
-* isparta
-* istanbul
-* eslint
-* flow
-
-The `prepublish` script checks the output of `eslint` and `flow` and runs tests.
+For example, it transforms:
+```es6
+import {Match, check} from 'meteor/check'
+```
+into:
+```es6
+const {Match, check} = Package.meteor.check
+```
+(or similar, depending on other Babel transformations)
