@@ -40,4 +40,15 @@ require('test');`)
   it("doesn't allow default imports from meteor pacakges", () => {
     expect(() => transform("import check from 'meteor/check'", options)).to.throw
   })
+  it('works for packages with dashes in the name', () => {
+    const {code} = transform("import {Accounts} from 'meteor/accounts-base'", options)
+    /* eslint-disable no-console */
+    /* eslint-disable no-undef */
+    console.log(code)
+    expect(eval(`(function() {
+      const Package = {'accounts-base': {Accounts: 5}}
+      ${code}
+      return {Accounts: Accounts}
+    })()`)).to.deep.equal({Accounts: 5})
+  })
 })
