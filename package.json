@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-meteor-imports",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Babel plugin for requiring/importing Meteor packages",
   "main": "lib/index.js",
   "scripts": {

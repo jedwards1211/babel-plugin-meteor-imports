@@ -1,5 +1,3 @@
-/* @flow */
-
 export default ({ types: t }) => {
   function isMeteorModuleArg(moduleArg) {
     return moduleArg && moduleArg.type === 'StringLiteral' && /^meteor\/[-a-zA-Z0-9_]+/.test(moduleArg.value)
